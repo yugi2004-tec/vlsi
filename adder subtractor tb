@@ -1,0 +1,11 @@
+module tb_add_sub;
+    reg [3:0] a, b;
+    reg sub;
+    wire [3:0] result;
+    wire carry;
+    add_sub uut(a, b, sub, result, carry);
+    initial begin
+        a = 4'd9; b = 4'd4; sub = 0; #10; // Add
+        a = 4'd9; b = 4'd4; sub = 1; #10; // Sub
+    end
+endmodule
