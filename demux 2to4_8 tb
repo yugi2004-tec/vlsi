@@ -1,0 +1,11 @@
+
+module tb_demux_1to2;
+    reg sel, din;
+    wire [1:0] y;
+    demux_1to2 uut(sel, din, y);
+    initial begin
+        din = 1;
+        sel = 0; #10;
+        sel = 1; #10;
+    end
+endmodule
