@@ -1,4 +1,3 @@
-
 module tb_demux_1to2;
     reg sel, din;
     wire [1:0] y;
