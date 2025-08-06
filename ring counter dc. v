@@ -1,0 +1,8 @@
+module ring_counter #(parameter N = 4)(input clk, reset, output reg [N-1:0] out);
+    always @(posedge clk or posedge reset) begin
+        if (reset)
+            out <= 1;
+        else
+            out <= {out[N-2:0], out[N-1]};
+    end
+endmodule
