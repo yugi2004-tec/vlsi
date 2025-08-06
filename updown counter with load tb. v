@@ -1,0 +1,15 @@
+module tb_up_down_counter;
+    reg clk, reset, up, load;
+    reg [3:0] load_val;
+    wire [3:0] count;
+    up_down_counter #(4) uut(clk, reset, up, load, load_val, count);
+    initial begin
+        clk = 0; forever #5 clk = ~clk;
+    end
+    initial begin
+        reset = 1; load = 0; up = 1; load_val = 4'd9; #10;
+        reset = 0; #20;
+        load = 1; #10;
+        load = 0; up = 0; #50;
+    end
+endmodule
