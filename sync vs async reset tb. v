@@ -1,0 +1,14 @@
+module tb_sync_async_reset;
+    reg clk, async_reset, sync_reset;
+    wire [3:0] count;
+    sync_async_reset uut(clk, async_reset, sync_reset, count);
+    initial begin
+        clk = 0; forever #5 clk = ~clk;
+    end
+    initial begin
+        async_reset = 1; sync_reset = 0; #10;
+        async_reset = 0; #20;
+        sync_reset = 1; #10;
+        sync_reset = 0; #50;
+    end
+endmodule
