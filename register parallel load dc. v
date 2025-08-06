@@ -1,0 +1,7 @@
+module reg_n #(parameter N=8)(input clk, en, load, input [N-1:0] d, output reg [N-1:0] q);
+    always @(posedge clk) begin
+        if (en)
+            if (load)
+                q <= d;
+    end
+endmodule
