@@ -1,0 +1,12 @@
+module tb_reg_n;
+    reg clk, en, load;
+    reg [7:0] d;
+    wire [7:0] q;
+    reg_n uut(clk, en, load, d, q);
+    initial begin clk = 0; forever #5 clk = ~clk; end
+    initial begin
+        en = 1; load = 1; d = 8'hAA; #10;
+        load = 0; d = 8'h55; #10;
+        load = 1; #10;
+    end
+endmodule
