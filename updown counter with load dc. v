@@ -1,0 +1,15 @@
+module up_down_counter #(parameter N = 4)(
+    input clk, reset, up, load,
+    input [N-1:0] load_val,
+    output reg [N-1:0] count);
+    always @(posedge clk or posedge reset) begin
+        if (reset)
+            count <= 0;
+        else if (load)
+            count <= load_val;
+        else if (up)
+            count <= count + 1;
+        else
+            count <= count - 1;
+    end
+endmodule
