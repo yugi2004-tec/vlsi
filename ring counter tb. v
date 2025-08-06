@@ -1,0 +1,12 @@
+module tb_ring_counter;
+    reg clk, reset;
+    wire [3:0] out;
+    ring_counter #(4) uut(clk, reset, out);
+    initial begin
+        clk = 0; forever #5 clk = ~clk;
+    end
+    initial begin
+        reset = 1; #10;
+        reset = 0; #100;
+    end
+endmodule
