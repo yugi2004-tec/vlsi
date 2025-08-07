@@ -1,0 +1,23 @@
+module seq_detect_1011 (
+    input clk, reset, in,
+    output reg detected
+);
+    reg [2:0] state;
+
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            state <= 0;
+            detected <= 0;
+        end else begin
+            case(state)
+                0: state <= in ? 1 : 0;
+                1: state <= in ? 1 : 2;
+                2: state <= in ? 3 : 0;
+                3: begin
+                    detected <= in;
+                    state <= in ? 1 : 2;
+                end
+            endcase
+        end
+    end
+endmodule
