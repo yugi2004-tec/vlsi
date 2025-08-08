@@ -1,0 +1,15 @@
+module tb_counter_down;
+    reg clk, reset;
+    wire [2:0] count;
+
+    counter_down uut (.clk(clk), .reset(reset), .count(count));
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor("Time=%0t count=%b", $time, count);
+        clk = 0; reset = 1; #10;
+        reset = 0; #50;
+        $finish;
+    end
+endmodule
