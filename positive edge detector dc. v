@@ -1,0 +1,15 @@
+module pos_edge_det (
+    input clk, rst, d,
+    output reg pe
+);
+    reg d_ff;
+    always @(posedge clk or posedge rst) begin
+        if(rst) begin
+            d_ff <= 0;
+            pe <= 0;
+        end else begin
+            pe <= d & ~d_ff;
+            d_ff <= d;
+        end
+    end
+endmodule
