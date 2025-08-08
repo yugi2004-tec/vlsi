@@ -1,0 +1,14 @@
+module tb_comparator;
+    reg [3:0] a, b;
+    wire lt, eq, gt;
+
+    comparator uut(a, b, lt, eq, gt);
+
+    initial begin
+        $monitor("a=%d b=%d lt=%b eq=%b gt=%b", a, b, lt, eq, gt);
+        a=4; b=5; #10;
+        a=6; b=6; #10;
+        a=8; b=3; #10;
+        $finish;
+    end
+endmodule
