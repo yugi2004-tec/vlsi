@@ -1,0 +1,11 @@
+module tb_counter_mod10;
+    reg clk=0, rst;
+    wire [3:0] count;
+    counter_mod10 uut (.clk(clk), .rst(rst), .count(count));
+    always #5 clk=~clk;
+    initial begin
+        rst=1; #10; rst=0;
+        #100;
+        $finish;
+    end
+endmodule
